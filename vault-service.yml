@@ -1,0 +1,24 @@
+#before using the vault service you need to install vault and run the following command
+#vault server --dev --dev-root-token-id="token"
+#    username: postgres
+#    password: 1234
+profiles:
+  active: vault
+cloud:
+  # Configuration for a vault server running in dev mode
+  vault:
+    scheme: http
+    host: 127.0.0.1
+    port: 8200
+    connection-timeout: 5000
+    read-timeout: 15000
+    authentication: TOKEN
+    token: token
+    kv:
+      enabled: true
+      backend: secret
+      backend-version: 2
+      profile-separator: /
+    generic:
+      enabled: false
+    application-name: application
